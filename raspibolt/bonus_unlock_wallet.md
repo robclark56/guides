@@ -10,7 +10,7 @@ I am proposing this understanding it is very controversial to embed a password i
 * Install expect
   admin ~ ฿ sudo apt-get install expect
 
-* Create the following script, save, and exit.
+* Create the following script, edit with your Password_[C], save, and exit.
 
   `admin ~ ฿ sudo nano /home/bitcoin/.lnd/lnd_unlock.exp`
 
