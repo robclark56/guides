@@ -1,20 +1,20 @@
-Comments
+#Comments
 I am proposing this understanding it is very controversial to embed a password in a plain text file.
 
 In the testnet environment - there is no real risk
 In the mainnet environment - there is a risk. It would be up to the system manager to decide if to include this or not.
 
 
-a)login as admin
+* login as admin
 
-b) Install expect
+* Install expect
   admin ~ ฿ sudo apt-get install expect
 
-c) Create the following script, save, and exit.
+* Create the following script, save, and exit.
 
-  admin ~ ฿ sudo nano /home/bitcoin/.lnd/lnd_unlock.exp
+  `admin ~ ฿ sudo nano /home/bitcoin/.lnd/lnd_unlock.exp`
 
-#!/usr/bin/expect
+`#!/usr/bin/expect
 #
 # File invoked by unlock_wallet.service to unlock the lnd wallet
 # /home/bitcoin/.lnd/lnd_unlock.exp
@@ -29,12 +29,12 @@ log_user 0
 send "$walletPW\r"
 log_user 1
 expect "lnd successfully unlocked!"
+`
 
+* Create the unlock script, save exit
+  `admin ~ ฿ sudo nano /home/bitcoin/.lnd/lnd_unlock.sh`
 
-d) Create the unlock script, save exit
-  admin ~ ฿ sudo nano /home/bitcoin/.lnd/lnd_unlock.sh
-
-#!/bin/bash
+`#!/bin/bash
 # RaspiBolt LND: Script to unlock wallet
 # /home/bitcoin/.lnd/lnd_unlock.sh
 
@@ -51,18 +51,16 @@ while [ 0 ];
   sleep 600
  fi
 done;
+`
 
 
+* Make it executable
 
-e) Make it executable
+ ` admin ~  ฿  sudo chmod +x /home/bitcoin/.lnd/lnd_unlock.sh`
 
-  admin ~  ฿  sudo chmod +x /home/bitcoin/.lnd/lnd_unlock.sh
-
-
-
-f) Create the corresponding systemd unit, save, and exit.
-   admin ~ ฿ sudo nano /etc/systemd/system/unlock_wallet.service
-
+* Create the corresponding systemd unit, save, and exit.
+`   admin ~ ฿ sudo nano /etc/systemd/system/unlock_wallet.service`
+`
 # Service to run looking to see if the LND wallet is locked (ie after every start/restart)
 # /etc/systemd/system/unlock_wallet.service
 
@@ -85,13 +83,12 @@ TimeoutSec=10
 
 [Install]
 WantedBy=multi-user.target
+`
 
-
-g) Enable systemd startup
-
+* Enable systemd startup
+'
    admin ~ ฿ sudo systemctl enable unlock_wallet
    admin ~ ฿ sudo systemctl start  unlock_wallet
    admin ~ ฿ sudo systemctl status unlock_wallet
-
-
+'
 
