@@ -4,6 +4,13 @@ It is very controversial to embed a password in a plain text file.
 * In the testnet environment - there is no real risk
 * In the mainnet environment - there is a risk. It would be up to the system manager to decide if to include this or not.
 
+# Justification
+Every time LND starts, the wallet is locked, and no lightning transactions can occur with this node. Examples of when LND may (re)start include:
+* Power failure 
+* External IP address change requires a restart of LND so that --externalip can be updated
+
+To create a 'lights-off' (unattended) LND node, it is necessary that a fresh bootup results in the LND node being fully operational (i.e. with the wallet unlocked) with no human input.
+
 # Procedure
 
 * login as admin
