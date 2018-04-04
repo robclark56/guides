@@ -1,4 +1,4 @@
-#Comments
+# Comments
 I am proposing this understanding it is very controversial to embed a password in a plain text file.
 
 In the testnet environment - there is no real risk
@@ -14,7 +14,8 @@ In the mainnet environment - there is a risk. It would be up to the system manag
 
   `admin ~ ฿ sudo nano /home/bitcoin/.lnd/lnd_unlock.exp`
 
-`#!/usr/bin/expect
+`
+#!/usr/bin/expect
 #
 # File invoked by unlock_wallet.service to unlock the lnd wallet
 # /home/bitcoin/.lnd/lnd_unlock.exp
@@ -34,7 +35,8 @@ expect "lnd successfully unlocked!"
 * Create the unlock script, save exit
   `admin ~ ฿ sudo nano /home/bitcoin/.lnd/lnd_unlock.sh`
 
-`#!/bin/bash
+`
+#!/bin/bash
 # RaspiBolt LND: Script to unlock wallet
 # /home/bitcoin/.lnd/lnd_unlock.sh
 
