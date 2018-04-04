@@ -11,7 +11,8 @@ I would prefer to hear of a better solution.
 * login as admin
 
 * Install expect
-  admin ~ ฿ sudo apt-get install expect
+  
+  `admin ~ ฿ sudo apt-get install expect`
 
 * Create the following script, edit with your Password_[C], save, and exit.
 
