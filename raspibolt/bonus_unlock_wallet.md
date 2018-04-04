@@ -32,7 +32,7 @@ log_user 1
 expect "lnd successfully unlocked!"
 ```
 
-* Create the unlock script, save exit
+* Create the unlock script, save, and exit
 
   `admin ~ ฿ sudo nano /home/bitcoin/.lnd/lnd_unlock.sh`
 
@@ -55,7 +55,6 @@ while [ 0 ];
  fi
 done;
 ```
-
 
 * Make it executable
 
