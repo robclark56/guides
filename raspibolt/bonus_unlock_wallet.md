@@ -33,6 +33,7 @@ expect "lnd successfully unlocked!"
 ```
 
 * Create the unlock script, save exit
+
   `admin ~ ฿ sudo nano /home/bitcoin/.lnd/lnd_unlock.sh`
 
 ```
@@ -58,10 +59,11 @@ done;
 
 * Make it executable
 
- ` admin ~  ฿  sudo chmod +x /home/bitcoin/.lnd/lnd_unlock.sh`
+  `admin ~  ฿  sudo chmod +x /home/bitcoin/.lnd/lnd_unlock.sh`
 
 * Create the corresponding systemd unit, save, and exit.
-`   admin ~ ฿ sudo nano /etc/systemd/system/unlock_wallet.service`
+  `admin ~ ฿ sudo nano /etc/systemd/system/unlock_wallet.service`
+
 ```
 # Service to run looking to see if the LND wallet is locked (ie after every start/restart)
 # /etc/systemd/system/unlock_wallet.service
@@ -71,7 +73,6 @@ Description=Unlock Wallet Service
 After=lnd.service
 Wants=lnd.service
 PartOf=lnd.service
-
 
 [Service]
 User=admin
@@ -88,6 +89,7 @@ WantedBy=multi-user.target
 ```
 
 * Enable systemd startup
+
 ```
    admin ~ ฿ sudo systemctl enable unlock_wallet
    admin ~ ฿ sudo systemctl start  unlock_wallet
