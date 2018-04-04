@@ -61,6 +61,7 @@ done;
   `admin ~  ฿  sudo chmod +x /home/bitcoin/.lnd/lnd_unlock.sh`
 
 * Create the corresponding systemd unit, save, and exit.
+
   `admin ~ ฿ sudo nano /etc/systemd/system/unlock_wallet.service`
 
 ```
