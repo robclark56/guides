@@ -14,7 +14,7 @@ In the mainnet environment - there is a risk. It would be up to the system manag
 
   `admin ~ ฿ sudo nano /home/bitcoin/.lnd/lnd_unlock.exp`
 
-`
+```
 #!/usr/bin/expect
 #
 # File invoked by unlock_wallet.service to unlock the lnd wallet
@@ -30,12 +30,12 @@ log_user 0
 send "$walletPW\r"
 log_user 1
 expect "lnd successfully unlocked!"
-`
+```
 
 * Create the unlock script, save exit
   `admin ~ ฿ sudo nano /home/bitcoin/.lnd/lnd_unlock.sh`
 
-`
+```
 #!/bin/bash
 # RaspiBolt LND: Script to unlock wallet
 # /home/bitcoin/.lnd/lnd_unlock.sh
@@ -53,7 +53,7 @@ while [ 0 ];
   sleep 600
  fi
 done;
-`
+```
 
 
 * Make it executable
@@ -62,7 +62,7 @@ done;
 
 * Create the corresponding systemd unit, save, and exit.
 `   admin ~ ฿ sudo nano /etc/systemd/system/unlock_wallet.service`
-`
+```
 # Service to run looking to see if the LND wallet is locked (ie after every start/restart)
 # /etc/systemd/system/unlock_wallet.service
 
@@ -85,12 +85,12 @@ TimeoutSec=10
 
 [Install]
 WantedBy=multi-user.target
-`
+```
 
 * Enable systemd startup
-'
+```
    admin ~ ฿ sudo systemctl enable unlock_wallet
    admin ~ ฿ sudo systemctl start  unlock_wallet
    admin ~ ฿ sudo systemctl status unlock_wallet
-'
+```
 
